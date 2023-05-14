@@ -22,7 +22,7 @@ const GenereMovieList = () => {
                             font-bold">
                             {item.name}
                         </h2>
-                        <div onClick={() => console.log(item.id)}
+                        <div
                             className=" flex flex-row items-center gap-1">
                             <span className="
                                 text-gray-400

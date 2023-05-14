@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import useMovie from '../hooks/useMovie';
+import { Link } from 'react-router-dom';
 
 const Billboard = () => {
 
@@ -29,7 +30,6 @@ const Billboard = () => {
                 from-[#1e2126]
                 via-transparent
                 to-transparent'>
-
             </div>
 
             <div className='
@@ -50,8 +50,13 @@ const Billboard = () => {
                     {movieBillboard.original_title}
                 </h2>
                 <div className='flex flex-row gap-3'>
-                    <button className='
+
+                    <Link to={'movieDetail'}>
+                        <button className='
                         rounded-lg
+                        text-white
+                        hover:border-gray-300
+                        hover:text-gray-300
                         border-black
                         px-6 md:px-8
                         py-2 md:py-4
@@ -61,11 +66,14 @@ const Billboard = () => {
                         flex
                         flex-row
                         items-center'>
-                        PLAY
-                    </button>
+                            PLAY
+                        </button>
+                    </Link>
                     <button className='
                         bg-transparent
                         border-white
+                        hover:border-gray-300
+                        hover:text-gray-300
                         rounded-lg
                         px-6 md:px-8
                         py-2 md:py-4

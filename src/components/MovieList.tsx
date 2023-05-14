@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import useMovie from '../hooks/useMovie';
 import GlobalKey from '../services/GlobalKey';
 import { IoChevronBackOutline } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 
 const MovieList = (genreId: any) => {
@@ -52,46 +53,48 @@ const MovieList = (genreId: any) => {
                 whitespace-nowrap 
                 '>
                 {movieList.map((item: any, index: any) => index < 7 && (
-                    <div key={item.id}
-                        className='
-                        group
-                        inline-block
-                        m-2
-                        md:m-3
-                        cursor-pointer'>
-                        <img className='
-                            w-[230px]
-                            md:w-[340px]
-                            object-cover
-                            rounded-2xl
-                            group-hover:border-[5px]
-                            border-gray-400
-                            p-2
-                            ransition-all 
-                            duration-300 
-                            ease-in-out'
-                            src={GlobalKey.IMAGE_BASE_URL + item.backdrop_path}
-                        />
-                        <h2 className='
-                            text-gray-400 
-                            mt-2 
-                            text-[12px] 
-                            md:text-[17px] 
-                            font-bold'>
-                            {item.id % 2 == 0 ? 'WATCH MOVIE' : 'START WATCHING'}
-                        </h2>
-                        <h2 className='
-                            text-white 
-                            mt-1 
-                            transition-all 
-                            md:text-[22px] 
-                            group-hover:font-bold'>
-                            {item.original_title.length > 30
-                                ? item.original_title.substring(0, 30) + ' ...'
-                                : item.original_title
-                            }
-                        </h2>
-                    </div>
+                    <Link key={item.id} to={'/movieDetail'}>
+                        <div onClick={() => console.log(item.title)}
+                            className='
+                            group
+                            inline-block
+                            m-2
+                            md:m-3
+                            cursor-pointer'>
+                            <img className='
+                                w-[230px]
+                                md:w-[340px]
+                                object-cover
+                                rounded-2xl
+                                group-hover:border-[5px]
+                                border-gray-400
+                                p-2
+                                ransition-all 
+                                duration-300 
+                                ease-in-out'
+                                src={GlobalKey.IMAGE_BASE_URL + item.backdrop_path}
+                            />
+                            <h2 className='
+                                text-gray-400 
+                                mt-2 
+                                text-[12px] 
+                                md:text-[17px] 
+                                font-bold'>
+                                {item.id % 2 == 0 ? 'WATCH MOVIE' : 'START WATCHING'}
+                            </h2>
+                            <h2 className='
+                                text-white 
+                                mt-1 
+                                transition-all 
+                                md:text-[22px] 
+                                group-hover:font-bold'>
+                                {item.original_title.length > 30
+                                    ? item.original_title.substring(0, 30) + ' ...'
+                                    : item.original_title
+                                }
+                            </h2>
+                        </div>
+                    </Link>
                 ))}
             </div>
             <IoChevronBackOutline onClick={() => slideRight(elementRef.current)}
